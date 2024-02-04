@@ -6,7 +6,7 @@ services:
     ports:
       - "3005:3005"
     environment:
-      MONGODB_URI: mongodb://mongodb:27017/jwt-auth
+      MONGODB_URI: mongodb://Chuchu:Bibu3015@mongodb:27017/jwt-auth?authSource=admin
       PORT: 3005
     depends_on:
       - mongodb
@@ -16,8 +16,15 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: Chuchu
       MONGO_INITDB_ROOT_PASSWORD: Bibu3015
+    ports:
+      - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 volumes:
   mongo-data:
